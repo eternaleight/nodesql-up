@@ -1,1 +1,1 @@
-# nodejs-mysql2
+# nodejs-mysql
