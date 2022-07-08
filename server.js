@@ -3,6 +3,7 @@ const { engine } = require("express-handlebars");
 const app = express()
 const fileUpload = require("express-fileupload")
 const mysql = require("mysql")
+require('dotenv').config();
 
 const PORT = 5001
 app.use(fileUpload())
@@ -13,11 +14,11 @@ app.set('views', './views');
 
 //connection pool
 const pool = mysql.createPool({
-  connectionLimit: 10,
-  host: "localhost",
-  user: "root",
-  password: "root",
-  database: "image_uploader",
+  connectionLimit: process.env.connectionLimit,
+  host: process.env.host,
+  user: process.env.user,
+  password: process.env.password,
+  database: process.env.database,
 })
 
 app.get("/",(req, res) => {
