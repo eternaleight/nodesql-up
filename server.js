@@ -22,11 +22,19 @@ const pool = mysql.createPool({
 })
 
 app.get("/",(req, res) => {
-  res.render("home")
 
   pool.getConnection((err, connection) => {
     if (err) throw err
     console.log("MYSQLと接続中...")
+
+    //データ取得
+    connection.query("SELECT * FROM image", (err, rows) => {
+      connection.release()
+      console.log(rows)
+      if (!err) {
+        res.render("home",{ rows })
+      }
+    })
   })
 })
 
@@ -41,7 +49,23 @@ app.post("/",(req, res) => {
   //サーバーに画像ファイルを置く場所の指定
   imageFile.mv(uploadPath, (err) => {
     if (err) return res.status(500).send(err)
-    res.send("画像アップロードに成功しました")
+    // res.send("画像アップロードに成功しました")
+  })
+
+  //mysqlに画像ファイルの名前を追加して保存
+  pool.getConnection((err, connection) => {
+    if (err) throw err
+
+    console.log("MYSQLと接続中...")
+    connection.query(`INSERT INTO image values ("", "${imageFile.name}")`, (err, rows) => {
+      connection.release()
+
+      if (!err) {
+        res.redirect("/")
+      } else {
+        console.log(err)
+      }
+    })
   })
 })
 
