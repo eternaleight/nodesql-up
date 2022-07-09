@@ -71,4 +71,4 @@ app.post("/",(req, res) => {
   })
 })
 
-app.listen(PORT, () => console.log("serverを起動中..."))
+app.listen(PORT, "0.0.0.0", () => console.log("serverを起動中..."))
