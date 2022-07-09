@@ -1,3 +1,3 @@
 # nodejs-mysql
 
-<img width="904" alt="名称未設定2h" src="https://user-images.githubusercontent.com/96198088/178055242-b6764657-43c4-4004-ad89-e56abb7e33e6.png">
+<img width="1138" alt="nodejs-mysql01" src="https://user-images.githubusercontent.com/96198088/178085089-69247414-c864-41fe-bcf3-50f468f598ad.png">
