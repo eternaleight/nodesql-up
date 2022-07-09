@@ -57,7 +57,7 @@ app.post("/",(req, res) => {
     if (err) throw err
 
     console.log("MYSQLと接続中...")
-    connection.query(`INSERT INTO image values ("", "${imageFile.name}")`, (err, rows) => {
+    connection.query(`INSERT INTO image values (null, "${imageFile.name}")`, (err, rows) => {
       connection.release()
 
       if (!err) {
