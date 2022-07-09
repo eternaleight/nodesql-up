@@ -4,8 +4,10 @@ const app = express()
 const fileUpload = require("express-fileupload")
 const mysql = require("mysql")
 require('dotenv').config();
+const cors = require('cors')
+app.use(cors())
+const PORT = process.env.PORT || 5001
 
-const PORT = 5001
 app.use(fileUpload())
 app.use(express.static("upload"))
 app.engine('handlebars', engine());
